@@ -1,14 +1,48 @@
 @mixin clearfix {
-    &::after{
-        content: '';
-        display: table;
-        clear: both;
-    }
+  &::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
 }
 
 @mixin absCenter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
+
+//media query mangaer
+/*
+0 - 600px: phone
+600-900px tablet portrait
+900-1200px tablet landscape
+[1200-1800] is where our normal styls appl
+1800+: big screens
+*/
+
+
+@mixin respond($breakponit) {
+  @if $breakponit == phone {
+    @media (max-width: 37.5em) {//600px
+      @content;
+    }
+  }
+  @if $breakponit == tab-port {
+    @media (max-width: 56.25em) { //900px
+      @content;
+    }
+  }
+  @if $breakponit == tab-land {
+    @media (max-width: 1200px) { //1200px
+      @content;
+    }
+  }
+  @if $breakponit == big-desktop {
+    @media (max-width: 112.5em) {//1800px
+      @content;
+    }
+  }
+}
+
